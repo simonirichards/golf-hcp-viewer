@@ -5,10 +5,6 @@ Parameters:
   SiteIdentifier:
     Type: String
     Description: This the shortname identifier for the site to use in some naming conventions to prevent changing other stacks
-  SiteBucketStack:
-    Type: String
-    Description: The Name of the Stack that holds the S3 Bucket
-    Default: "notused"
   SiteBucketName:
     Type: String
     Description: The name of the bucket to be used in the buildspec
@@ -203,7 +199,3 @@ Outputs:
   PipelineUrl:
     Value: !Sub https://console.aws.amazon.com/codepipeline/home?region=${AWS::Region}#/view/${Pipeline}
     Description: CodePipeline URL
-  WebSiteURL: 
-    Value: 
-      Fn::ImportValue: !Sub "${SiteBucketStack}-SiteUrl"
-    Description:  The URL that you can access the website on

@@ -18,6 +18,8 @@ Outputs:
   SiteUrl:
     Value: !GetAtt [SiteBucket, WebsiteURL]
     Description: S3 Website URL
+    Export: 
+      Name: !Sub "${AWS::StackName}-SiteURL"
   BucketName:
     Value: !Ref SiteBucket
-    Description: Stack Bucket Name 
+    Description: Stack Bucket Name
