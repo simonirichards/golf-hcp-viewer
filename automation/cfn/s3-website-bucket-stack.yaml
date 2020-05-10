@@ -1,0 +1,23 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CFN for Website Bucket Name
+Parameters:
+  SiteBucketName:
+    Type: String
+    Description: Name of bucket to create to host the website
+Resources:  
+  SiteBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+    Properties:
+      BucketName: !Ref SiteBucketName
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+Outputs:
+  SiteUrl:
+    Value: !GetAtt [SiteBucket, WebsiteURL]
+    Description: S3 Website URL
+  BucketName:
+    Value: !Ref SiteBucket
+    Description: Stack Bucket Name 
